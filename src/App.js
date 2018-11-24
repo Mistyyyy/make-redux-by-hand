@@ -3,6 +3,7 @@ import './App.css';
 import Header from './containers/header'
 import Content from './containers/header'
 import ThemeSwitch from './containers/themeColor'
+import Counter from './containers/couter'
 
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Content />
+        <Counter />
         <ThemeSwitch />
       </div>
     );

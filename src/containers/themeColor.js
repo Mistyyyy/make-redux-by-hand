@@ -1,5 +1,5 @@
 import ThemeColor from '../component/themeColor'
-import { connect } from 'react-redux'
+import { connect } from '../connect'
 
 const mapStateToProps = state => ({
   themeColor: state.ThemeColor
@@ -10,6 +10,12 @@ const mapDispatchToProps = dispatch => {
     onSwitchColor: (themeColor) => dispatch({
       type: 'CHANGE_COLOR',
       themeColor
+    }),
+    onAdd : () => dispatch({
+      type: 'ADD'
+    }),
+    onDes: () => dispatch({
+      type: 'DEC'
     })
   }
 }

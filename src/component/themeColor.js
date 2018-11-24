@@ -21,11 +21,19 @@ class ThemeColor extends Component {
       this.props.onSwitchColor('blue')
     }
   }
+  ayncAdd() {
+    setTimeout(() => {
+      this.props.onAdd()
+    }, 1000);
+  }  
   render () {
     return (
       <div >
         <button style={{color: this.props.themeColor}} onClick={this.changeRed}>Red</button>
         <button style={{color: this.props.themeColor}} onClick={this.changeBlue}>Blue</button>
+        <button onClick={() => this.props.onAdd()}>add</button>
+        <button onClick={() => this.props.onDes()}>dec</button>
+        <button onClick={this.ayncAdd.bind(this)}>async add</button>
       </div>
     )
   }

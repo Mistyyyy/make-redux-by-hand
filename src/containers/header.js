@@ -1,5 +1,5 @@
 import Header from '../component/header'
-import { connect } from  'react-redux'
+import { connect } from '../connect'
 
 const mapState = state => ({
   themeColor: state.themeColor
