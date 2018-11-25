@@ -1,10 +1,9 @@
-// import { createStore } from 'redux'
 
 export function createStore (reducer, initState = {}, enhancer) {
   if (enhancer) {
     const createSotre = enhancer(createStore)
     const store = createSotre(reducer, initState)
-    console.log(store)
+    return store
   }
   let state = initState
   const listeners = []
@@ -33,7 +32,6 @@ export const combineReducers = reducers => {
 }
 
 export const applyMiddleWare = (...middleWares) => {
-  debugger
   return (createStore) => (reducer, initState, enhancer) => {
     const store = createStore(reducer, initState, enhancer)
     let dispatch = store.dispatch
@@ -58,28 +56,12 @@ export const applyMiddleWare = (...middleWares) => {
 
 const compose = (...fn) => {
   if (fn.length === 0) {
-    return
+    return dispatch => dispatch
   }
   if (fn.length === 1) {
-    return fn[0]()
+    return fn[0]
   }
   let last = fn[fn.length - 1]
   let others = fn.slice(0, -1)
   return (...args) => others.reduceRight((current, next) => next(current), last(...args))
 }
-
-// const reducer = combineReducers({
-//   themeColor,
-//   num
-// })
-
-
-// const store = createStore(reducer, {}, applyMiddleWare(({getState}) => {
-//     console.log(getState())
-//     return (next) => {
-//       return dispatch => dispatch
-//     }
-//   }
-// ))
-
-// export default store
