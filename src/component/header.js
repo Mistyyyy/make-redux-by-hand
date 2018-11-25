@@ -7,7 +7,7 @@ class Header extends Component {
   }
   render () {
     return (
-      <h1 style={{ color: this.props.themeColor}}>React.js 小书</h1>
+      <h1 style={{ color: this.props.themeColor}}>手动实现 redux 实现最基本的API 以及 封装来一个简单的中间件</h1>
     )
   }
 }

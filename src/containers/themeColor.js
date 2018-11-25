@@ -10,7 +10,12 @@ const mapDispatchToProps = dispatch => {
   return {
     onSwitchColor: (themeColor) => dispatch(createChangeAction(themeColor)),
     onAdd : () => dispatch(createAddAction()),
-    onDes: () => dispatch(createDecAction())
+    onDes: () => dispatch(createDecAction()),
+    onSyncAdd: () => dispatch((dispatch) => {
+      setTimeout(() => {
+        dispatch(createAddAction())
+      },  1000)
+    })
   }
 }
 

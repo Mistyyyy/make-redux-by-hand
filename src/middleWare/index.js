@@ -5,7 +5,6 @@ const logMiddle = ({ getState }) => dispatch => action => {
   const nowAction = action
   dispatch(action)
   const nowState =  getState()
-  log(dispatch)
   log(preveState)
   log(nowAction)
   log(nowState)
@@ -13,9 +12,14 @@ const logMiddle = ({ getState }) => dispatch => action => {
 
 export const logOthers = () => dispatch => action => {
   log('second')
-  log(dispatch)
   dispatch(action)
-  log('end')
 } 
+
+export const thunk = ({ dispatch, getState }) => originDispatch => action => {
+  if (typeof action === 'function') {
+    action(dispatch, getState)
+  }
+  originDispatch(action)
+}
 
 export default logMiddle

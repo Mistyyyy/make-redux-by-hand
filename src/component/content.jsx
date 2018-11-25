@@ -8,7 +8,7 @@ class Content extends Component {
   render () {
     return (
       <div style={{color: this.props.themeColor}}>
-        <p>React.js 小书内容</p>
+        <p>手动实现 redux 实现最基本的API 以及 封装来一个简单的中间件</p>
       </div>
     )
   }
