@@ -1,10 +1,13 @@
 // import { createStore } from 'redux'
 import { themeColor, num } from './reducer'
 
-function createStore (reducer) {
-  let state = {}
+function createStore (reducer, initState = {}) {
+  let state = initState
   const listeners = []
-  const subscribe = (listener) => listeners.push(listener)
+  const subscribe = (listener) => {
+    listeners.push(listener)
+    return () => listeners.pop()
+  }
   const getState = () => state
   const dispatch = (action) => {
     state = reducer(state, action)
