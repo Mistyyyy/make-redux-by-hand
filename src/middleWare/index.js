@@ -1,17 +1,17 @@
-const { log } = console
+const { info } = console
 
 const logMiddle = ({ getState }) => dispatch => action => {
   const preveState = getState()
   const nowAction = action
   dispatch(action)
   const nowState =  getState()
-  log(preveState)
-  log(nowAction)
-  log(nowState)
+  info(preveState)
+  info(nowAction)
+  info(nowState)
 }
 
 export const logOthers = () => dispatch => action => {
-  log('second')
+  info('second')
   dispatch(action)
 } 
 

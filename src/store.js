@@ -63,5 +63,9 @@ const compose = (...fn) => {
   }
   let last = fn[fn.length - 1]
   let others = fn.slice(0, -1)
+  // 简单说一下这样做的原因 也就是中间件的原理 => 利用改装原来store的dispatch
+  // 每一个都会在中间件中做一些事情 同理，第二个中间件是利用前一个中间件改装后的dispatch来形成新的dispatch
+  // 必须要触发最基本的store的dispatch才会有作用。
+  // 这里的last(...arg)这句话的用意在于形成新的dispatch
   return (...args) => others.reduceRight((current, next) => next(current), last(...args))
 }
