@@ -4,6 +4,6 @@ import logMiddleWare, { logOthers, thunk } from '../middleWare'
 
 const reducers = combineReducers({themeColor, num})
 
-const store = createStore(reducers, {}, applyMiddleWare(thunk, logOthers))
+const store = createStore(reducers, {}, applyMiddleWare(thunk, logOthers, logMiddleWare))
 
 export default store

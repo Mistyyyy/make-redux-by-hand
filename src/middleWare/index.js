@@ -17,9 +17,9 @@ export const logOthers = () => dispatch => action => {
 
 export const thunk = ({ dispatch, getState }) => originDispatch => action => {
   if (typeof action === 'function') {
-    action(dispatch, getState)
+    return action(dispatch, getState)
   }
-  originDispatch(action)
+    return originDispatch(action)
 }
 
 export default logMiddle
